@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="theme-color" content="#fefefe">
+      <meta name="Description" content="Modern To do list web app.">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" />
+      <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+      <title>MY TO DO LIST :}</title>
+      <link rel="stylesheet" href="styles.css">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+      <div id="main-container">
+
+        <div id="theme-switcher">
+          <select name="themes" id="theme">
+            <option value="light">light</option>
+            <option value="dark">Dark</option>
+            <option value="brighten">Brighten</option>
+          </select>
+        </div>
+
+        <div id="content-container">
+
+          <h1>Make it <i>happen.</i></h1>
+          <button id="new-btn" class="btn">New task</button>
+
+          <form class="form-container hidden">
+            <div id="form-header">
+              <button id="close-btn"  type="button" aria-label="close">
+                <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 48 48" width="18px" height="18px"><path fill="#F44336" 
+                d="M21.5 4.5H26.501V43.5H21.5z" transform="rotate(45.001 24 24)" /><path
+                 fill="#F44336" d="M21.5 4.5H26.5V43.501H21.5z" transform="rotate(135.008 24 24)" /></svg>
+              </button>
+            </div>
+
+            <div id="form-main">
+              <label class="form-label" for="title-input">Title:</label>
+              <input type="text" class="form-input" id="title-input" value="" required placeholder="add a title...">
+
+              <label class="form-label" for="date-input">Date:</label>
+              <input type="date" id="date-input" class="form-input" value="" required> 
+
+              <label class="form-label" for="description-input">Description:</label>
+              <textarea class="form-input" id="description-input" cols="30" rows="5"></textarea>
+            </div>
+
+            <div id="form-footer">
+              <button type="reset" id="reset-btn" class="btn">Reset</button>
+              <button type="submit" id="add-btn" class="btn">I Got this!</button>
+            </div>
+          </form>
+
+          <dialog id="confirm-close-dialog">
+            <form method="dialog">
+              <p>Are you sure?</p>
+              <div id="confirm-btn-container">
+                <button id="cancel-btn" class="btn">Cancel</button>
+                <button id="discard-btn" class="btn">Discard</button>
+              </div>
+            </form>
+          </dialog>
+        </div>
+        <div id="task-container hidden">
+        
+          </div>
+      </div>
+      <script src="main.js"></script>
+    </body>
+</html>
