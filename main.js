@@ -1,12 +1,17 @@
 const mainContainer = document.getElementById("main-container");
-const headerEl = document.querySelector("h1");
-const btnEl = document.querySelectorAll(".btn");
+const formContainer = document.querySelector(".form-container");
+const newTaskBtn = document.getElementById("new-btn");
+const closeFormBtn = document.getElementById("close-btn");
 const themeSelect = document.getElementById("theme");
+const titleInput = document.getElementById("title-input");
+const dateInput = document.getElementById("date-input");
+const descriptionInput = document.getElementById("description-input");
 
 themeSelect.addEventListener("change", ()=>{
-  mainContainer.classList.remove("theme-light");
-  mainContainer.classList.remove("theme-dark");
-  mainContainer.classList.remove("theme-brighten");
+  const themeArray = ["theme-light","theme-dark","theme-brighten"];
+   themeArray.forEach((theme)=>{
+    mainContainer.classList.remove(theme);
+   });
   if(themeSelect.value === "light"){
    mainContainer.classList.add('theme-light');
   }
@@ -16,4 +21,12 @@ themeSelect.addEventListener("change", ()=>{
   else if(themeSelect.value === "brighten"){
     mainContainer.classList.add("theme-brighten");
   }
+});
+
+newTaskBtn.addEventListener("click", ()=> {
+  formContainer.classList.remove("hidden");
+});
+closeFormBtn.addEventListener("click", ()=>{
+  formContainer.classList.add("hidden");
+  formContainer.reset();
 });

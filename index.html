@@ -41,13 +41,13 @@
             </div>
 
             <div id="form-main">
-              <label class="form-label" for="title-input">Title:</label>
+              <label class="form-label" for="title-input" id="formTitle">Title:</label>
               <input type="text" class="form-input" id="title-input" value="" required placeholder="add a title...">
 
-              <label class="form-label" for="date-input">Date:</label>
+              <label class="form-label" for="date-input" id="formDate">Date:</label>
               <input type="date" id="date-input" class="form-input" value="" required> 
 
-              <label class="form-label" for="description-input">Description:</label>
+              <label class="form-label" for="description-input" id="formDescription">Description:</label>
               <textarea class="form-input" id="description-input" cols="30" rows="5"></textarea>
             </div>
 
@@ -56,16 +56,6 @@
               <button type="submit" id="add-btn" class="btn">I Got this!</button>
             </div>
           </form>
-
-          <dialog id="confirm-close-dialog">
-            <form method="dialog">
-              <p>Are you sure?</p>
-              <div id="confirm-btn-container">
-                <button id="cancel-btn" class="btn">Cancel</button>
-                <button id="discard-btn" class="btn">Discard</button>
-              </div>
-            </form>
-          </dialog>
           <div id="task-container" hidden>
         
           </div>
