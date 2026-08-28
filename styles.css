@@ -73,6 +73,9 @@ p{
 .theme-light .form-label{
   color: #291c0e;
 }
+.theme-light .task-container{
+  background-color: #fafafa;
+}
 .theme-dark{
  background-image: linear-gradient(100deg, #1a1a1a, #000000);
 }
@@ -85,6 +88,9 @@ p{
 }
 .theme-dark .form-label{
   color: #dcdcdc;
+}
+.theme-dark .task-container{
+  background-color: #291c0e;
 }
 .theme-brighten{
  background-image: linear-gradient(100deg, #575656, #062e3f);
@@ -99,13 +105,13 @@ p{
 .theme-brighten .form-label{
   color: #fafafa;
 }
+.theme-brighten .task-container{
+ background-color:#222222;
+}
 #task-container{
     width: 50%;
     height: 200px;
     margin-top: 15px;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.25);
     border-radius: 16px;
     box-shadow: 0 8px 32px 0 rgba(0,0,0,0.15);
@@ -179,6 +185,9 @@ p{
 }
 form.hidden{
     display: none;
+}
+.checked{
+  text-decoration: line-through;
 }
 @media screen and (max-width: 1000px){
   

@@ -6,10 +6,12 @@ const themeSelect = document.getElementById("theme");
 const titleInput = document.getElementById("title-input");
 const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
+const taskContainer = document.getElementById("task-container");
 
+//theme swtch logic
 themeSelect.addEventListener("change", ()=>{
-  const themeArray = ["theme-light","theme-dark","theme-brighten"];
-   themeArray.forEach((theme)=>{
+  const themetaskArray = ["theme-light","theme-dark","theme-brighten"];
+   themetaskArray.forEach((theme)=>{
     mainContainer.classList.remove(theme);
    });
   if(themeSelect.value === "light"){
@@ -22,11 +24,60 @@ themeSelect.addEventListener("change", ()=>{
     mainContainer.classList.add("theme-brighten");
   }
 });
-
+// form close and open 
 newTaskBtn.addEventListener("click", ()=> {
   formContainer.classList.remove("hidden");
 });
 closeFormBtn.addEventListener("click", ()=>{
   formContainer.classList.add("hidden");
   formContainer.reset();
+});
+//working on local storage and task container
+function addTask(){
+ taskContainer.removeAttribute("hidden");
+ let taskObj = {
+   id: Date.now(),
+   title: titleInput.value,
+   date: dateInput.value,
+   description: descriptionInput.value
+ };
+ taskArray.push(taskObj);
+ localStorage.setItem('task', JSON.stringify(taskArray));
+}
+function renderTask(){
+  taskContainer.innerHTML = "";
+  taskArray.forEach(({id, title, date, description}) =>{
+  taskContainer.innerHTML += `<div id="${id}" class="task">
+  <p>${title}</p>
+  <p>${date}</p>
+  <p>${description}</p>
+  <button class="check-btn"><i class="fas fa-check"></i></button>
+  <button class="trash-btn"><i class="fas fa-trash"></i></button>
+ </div>`;
+ });
+}
+let taskArray = [];
+formContainer.addEventListener("submit", (e)=>{
+ e.preventDefault();
+ addTask();
+ renderTask();
+ formContainer.reset();
+ formContainer.classList.add("hidden");
+});
+taskContainer.addEventListener("click", (e)=>{
+  const trashBtn = e.target.closest(".trash-btn");
+  const checkBtn = e.target.closest(".check-btn");
+  if (!trashBtn && !checkBtn) return;
+  const parentTrash = trashBtn.closest(".task");
+  const parentCheck = checkBtn.closest(".task");
+  if(parentTrash){
+    taskArray = taskArray.filter((taskEl)=> taskEl.id !== Number(parentTrash.id));
+    localStorage.setItem('task', JSON.stringify(taskArray));
+    renderTask();
+  }
+  else if(parentCheck){
+    parentCheck.classList.add("checked");
+    localStorage.setItem('task', JSON.stringify(taskArray));
+    renderTask();
+  }
 });
