@@ -34,7 +34,6 @@ closeFormBtn.addEventListener("click", ()=>{
 });
 //working on local storage and task container
 function addTask(){
- taskContainer.removeAttribute("hidden");
  let taskObj = {
    id: Date.now(),
    title: titleInput.value,
@@ -56,8 +55,14 @@ function renderTask(){
   <button class="trash-btn"><i class="fas fa-trash"></i></button>
  </div>`;
  });
+ if (taskArray.length === 0) {
+  taskContainer.hidden = true;
+} else {
+  taskContainer.hidden = false;
 }
-let taskArray = [];
+}
+let taskArray = (localStorage.getItem('task') !== null ? JSON.parse(localStorage.getItem('task')) : []);
+renderTask();
 formContainer.addEventListener("submit", (e)=>{
  e.preventDefault();
  addTask();
