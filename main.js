@@ -39,15 +39,16 @@ function addTask(){
    id: Date.now(),
    title: titleInput.value,
    date: dateInput.value,
-   description: descriptionInput.value
+   description: descriptionInput.value,
+   isCompleted: false
  };
  taskArray.push(taskObj);
  localStorage.setItem('task', JSON.stringify(taskArray));
 }
 function renderTask(){
   taskContainer.innerHTML = "";
-  taskArray.forEach(({id, title, date, description}) =>{
-  taskContainer.innerHTML += `<div id="${id}" class="task">
+  taskArray.forEach(({id, title, date, description, isCompleted}) =>{
+  taskContainer.innerHTML += `<div id="${id}" class="task ${isCompleted ?'checked': ''}">
   <p>${title}</p>
   <p>${date}</p>
   <p>${description}</p>
@@ -68,15 +69,16 @@ taskContainer.addEventListener("click", (e)=>{
   const trashBtn = e.target.closest(".trash-btn");
   const checkBtn = e.target.closest(".check-btn");
   if (!trashBtn && !checkBtn) return;
-  const parentTrash = trashBtn.closest(".task");
-  const parentCheck = checkBtn.closest(".task");
-  if(parentTrash){
-    taskArray = taskArray.filter((taskEl)=> taskEl.id !== Number(parentTrash.id));
+  const taskEl = e.target.closest(".task");
+  
+  if(trashBtn){
+    taskArray = taskArray.filter((taskelement)=> taskelement.id !== Number(taskEl.id));
     localStorage.setItem('task', JSON.stringify(taskArray));
     renderTask();
   }
-  else if(parentCheck){
-    parentCheck.classList.add("checked");
+  else if(checkBtn){
+    const taskIndex = taskArray.findIndex(taskelement => taskelement.id === Number(taskEl.id));
+    taskArray[taskIndex].isCompleted = !taskArray[taskIndex].isCompleted;
     localStorage.setItem('task', JSON.stringify(taskArray));
     renderTask();
   }
