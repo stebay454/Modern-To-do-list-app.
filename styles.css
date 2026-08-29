@@ -15,13 +15,16 @@ body{
  position: relative;
  width: 100%;
  height: 100vh;
+ padding: 0;
 }
 #content-container{
- margin-top: 123px;
+ height: 100%;
+ padding-bottom: 95px;
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ 
 }
 h1{
   font-family: 'Manrope';
@@ -73,8 +76,17 @@ p{
 .theme-light .form-label{
   color: #291c0e;
 }
-.theme-light .task-container{
+.theme-light #task-container{
   background-color: #fafafa;
+}
+.theme-light .task{
+  background-color:#d3d3d3;
+}
+.theme-light .check-btn{
+  background-color: #fefefe;
+}
+.theme-light .trash-btn{
+  background-color: #fefefe;
 }
 .theme-dark{
  background-image: linear-gradient(100deg, #1a1a1a, #000000);
@@ -87,10 +99,19 @@ p{
   color: #291c0e;
 }
 .theme-dark .form-label{
-  color: #dcdcdc;
+  color: #291c0e;
 }
-.theme-dark .task-container{
-  background-color: #291c0e;
+.theme-dark #task-container{
+  background-color: #575656;
+}
+.theme-dark .task{
+  background-color: #fefefe;
+}
+.theme-dark .check-btn{
+  background-color: #d3d3d3;
+}
+.theme-dark .trash-btn{
+  background-color: #d3d3d3;
 }
 .theme-brighten{
  background-image: linear-gradient(100deg, #575656, #062e3f);
@@ -105,17 +126,34 @@ p{
 .theme-brighten .form-label{
   color: #fafafa;
 }
-.theme-brighten .task-container{
- background-color:#222222;
+.theme-brighten #task-container{
+ background-color:#444;
+}
+.theme-brighten .task{
+  background-color: #6b7d87;
+}
+.theme-brighten .trash-btn{
+  background-color: #4a5a63;
+}
+.theme-brighten .check-btn{
+  background-color: #4a5a63;
+}
+.theme-brighten .info{
+ color: #E2E8F0;
+}
+.theme-brighten .fas{
+  color: #E2E8F0;
 }
 #task-container{
-    width: 50%;
-    height: 200px;
-    margin-top: 15px;
-    border: 1px solid rgba(255,255,255,0.25);
-    border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.15);
-    overflow-y: auto;
+  width: 70%;
+  max-height: 300px;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.15);
+  flex: 1;
+  overflow-y: auto;
 }
 #close-btn{
   background: none;
@@ -188,7 +226,48 @@ form.hidden{
 }
 .checked{
   text-decoration: line-through;
+  opacity: 0.5;
 }
-@media screen and (max-width: 1000px){
-  
+.task{
+  border-radius: 16px;
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
 }
+.one-task{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.check-btn ,.trash-btn{
+ outline: none;
+ border: none;
+ cursor: pointer;
+ padding: 12px 24px;
+ font-size: 16px;
+ border-radius: 11px;
+}
+.task-info{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  word-wrap:break-word;
+  gap: 10px;
+  text-align: center;
+}
+.task-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  gap: 10px;
+}
+.info{
+  font-family: 'Manrope';
+}
+@media screen and (max-width: 480px){
+  .task-buttons{
+    flex-direction: column;
+  }
+};

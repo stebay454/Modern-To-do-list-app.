@@ -48,11 +48,17 @@ function renderTask(){
   taskContainer.innerHTML = "";
   taskArray.forEach(({id, title, date, description, isCompleted}) =>{
   taskContainer.innerHTML += `<div id="${id}" class="task ${isCompleted ?'checked': ''}">
-  <p>${title}</p>
-  <p>${date}</p>
-  <p>${description}</p>
+  <div class="one-task">
+  <div class="task-info">
+  <span class="info">${title}</span>
+  <span class="info">${date}</span>
+  <span class="info">${description}</span>
+  </div>
+  <div class="task-buttons">
   <button class="check-btn"><i class="fas fa-check"></i></button>
   <button class="trash-btn"><i class="fas fa-trash"></i></button>
+  </div>
+  </div>
  </div>`;
  });
  if (taskArray.length === 0) {
