@@ -145,7 +145,7 @@ p{
   color: #E2E8F0;
 }
 #task-container{
-  width: 70%;
+  width: 40%;
   max-height: 300px;
   margin-top: 25px;
   padding: 20px;
@@ -265,6 +265,11 @@ form.hidden{
 }
 .info{
   font-family: 'Manrope';
+}
+@media screen and (max-width: 1000px){
+  #task-container{
+    width: 70%;
+  }
 }
 @media screen and (max-width: 480px){
   .task-buttons{
